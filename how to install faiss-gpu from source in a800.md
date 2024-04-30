@@ -81,4 +81,5 @@ print(f"time: {end_time - start_time:.4f} s")
 - [index_cpu_to_gpu_multiple slow on first run, fast on subsequent](https://github.com/facebookresearch/faiss/issues/2710)
 
 ## ref
+- [official tutorial](https://github.com/facebookresearch/faiss/blob/main/INSTALL.md)
 - [ref1](https://blog.csdn.net/qq_41368074/article/details/130714550)
