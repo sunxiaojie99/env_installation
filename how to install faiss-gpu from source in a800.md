@@ -48,11 +48,10 @@ nb = 100000
 nq = 10000
 np.random.seed(0)
 
-# 检查GPU支持
 if faiss.get_num_gpus() > 0:
-    print("Faiss support GPU")
+    print("Faiss supports GPU")
 else:
-    print("Faiss not support GPU")
+    print("Faiss does not support support GPU")
 
 xb = np.random.random((nb, d)).astype('float32')
 xq = np.random.random((nq, d)).astype('float32')
@@ -68,7 +67,6 @@ index.add(xb)
 D, I = index.search(xq, 10)
 end_time = time.time()
 
-# 打印搜索时间
 print(f"time: {end_time - start_time:.4f} s")
 
 ```
