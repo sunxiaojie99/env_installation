@@ -8,7 +8,7 @@
 - download swig-4.1.1.tar.gz: https://sourceforge.net/projects/swig/files/swig/
 - download faiss-1.7.1.tar.gz: https://github.com/facebookresearch/faiss/releases/tag/v1.7.1
 
-## begin build
+## start building
 ```
 tar -zxvf swig-4.1.1.tar.gz
 cp pcre2-10.37.tar.gz swig-4.1.1/
@@ -37,7 +37,7 @@ make -C build -j swigfaiss
 cd build/faiss/python && python setup.py install
 ```
 
-## TEST
+## test
 ```
 import faiss
 import numpy as np
