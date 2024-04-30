@@ -7,6 +7,7 @@
 - download pcre2-10.37.tar.gz: https://sourceforge.net/projects/pcre/files/pcre2/10.37/pcre2-10.37.tar.gz
 - download swig-4.1.1.tar.gz: https://sourceforge.net/projects/swig/files/swig/
 - download faiss-1.7.1.tar.gz: https://github.com/facebookresearch/faiss/releases/tag/v1.7.1
+- download cmake: https://github.com/Kitware/CMake/releases/download/v3.29.2/cmake-3.29.2.tar.gz
 
 ## start building
 ```
@@ -37,6 +38,17 @@ make -C build -j swigfaiss
 cd build/faiss/python && python setup.py install
 ```
 
+optional: update cmake
+```
+tar -xzvf cmake-3.29.2.tar.gz
+cd cmake-3.29.2
+chmod 777 ./configure
+./configure
+make
+make install
+update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
+cmake --version
+```
 ## test
 ```
 import faiss
