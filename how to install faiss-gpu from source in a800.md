@@ -10,33 +10,6 @@
 - download cmake: https://github.com/Kitware/CMake/releases/download/v3.29.2/cmake-3.29.2.tar.gz
 
 ## start building
-```
-tar -zxvf swig-4.1.1.tar.gz
-cp pcre2-10.37.tar.gz swig-4.1.1/
-
-cd swig-4.1.1/
-./Tools/pcre-build.sh
-./configure
-make
-make install
-# swig -version 
-```
-
-```
-apt-get update
-apt-get install libopenblas-dev
-apt-get install libomp-dev
-apt install intel-mkl
-```
-
-```
-tar -zxvf faiss-1.7.1.tar.gz
-cd faiss-1.7.1
-cmake -B build . -DCUDAToolkit_ROOT=/usr/local/cuda/ -DFAISS_ENABLE_GPU=ON -DPython_EXECUTABLE=$(which python) -DBUILD_TESTING=OFF
-make -C build -j faiss
-make -C build -j swigfaiss
-cd build/faiss/python && python setup.py install
-```
 
 optional: update cmake
 ```
@@ -49,6 +22,37 @@ make install
 update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
 cmake --version
 ```
+
+```
+tar -zxvf swig-4.1.1.tar.gz
+cp pcre2-10.37.tar.gz swig-4.1.1/
+
+cd swig-4.1.1/
+./Tools/pcre-build.sh
+./configure
+make
+make install
+swig -version
+```
+
+```
+apt-get update -y
+apt-get install libopenblas-dev -y
+apt-get install libomp-dev -y
+apt-get install libssl-dev -y
+apt-get install tmux -y
+```
+
+```
+tar -zxvf faiss-1.7.1.tar.gz
+cd faiss-1.7.1
+cmake -B build . -DCUDAToolkit_ROOT=/usr/local/cuda/ -DFAISS_ENABLE_GPU=ON -DPython_EXECUTABLE=$(which python) -DBUILD_TESTING=OFF
+make -C build -j faiss
+make -C build -j swigfaiss
+cd build/faiss/python && python setup.py install
+CUDA_VISIBLE_DEVICES=0 python test_faiss_gpu.py
+```
+
 ## test
 ```
 import faiss
